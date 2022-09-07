@@ -110,7 +110,7 @@ class NewRelicMiddleware
     {
         return collect($this->mapCustomTransactionNames())
             ->mapWithKeys(fn (string $name, string $path) => [
-                (Str::of($path)->trim('/')->toString() ?: '/') => $name,
+                (((string)Str::of($path)->trim('/')) ?: '/') => $name,
             ])->get(
                 Str::of($request->path())->trim('/')->toString() ?: '/'
             );
