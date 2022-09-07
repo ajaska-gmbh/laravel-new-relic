@@ -112,7 +112,7 @@ class NewRelicMiddleware
             ->mapWithKeys(fn (string $name, string $path) => [
                 (((string)Str::of($path)->trim('/')) ?: '/') => $name,
             ])->get(
-                Str::of($request->path())->trim('/')->toString() ?: '/'
+                ((string)Str::of($request->path())->trim('/')) ?: '/'
             );
     }
 
